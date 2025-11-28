@@ -1,8 +1,11 @@
-import express from "express";
+import express, { Application } from "express";
 import cors from "cors";
+import dotenv from "dotenv";
 import todoRoutes from "./routes/todoRoutes";
 
-const app = express();
+dotenv.config();
+
+const app: Application = express();
 
 app.use(
   cors({
@@ -15,7 +18,8 @@ app.use(express.json());
 
 app.use("/api/todos", todoRoutes);
 
-const PORT = process.env.PORT || 5000;
+const PORT: number = Number(process.env.PORT) || 5000;
+
 app.listen(PORT, () => {
   console.log(`MindRoute Server is Listening to PORT: ${PORT}`);
 });
