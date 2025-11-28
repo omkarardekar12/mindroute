@@ -20,7 +20,7 @@ export default function Todo() {
   };
 
   return (
-    <>
+    <div>
       <AddForm />
       <h2>Todo List App</h2>
       <ul>
@@ -44,6 +44,6 @@ export default function Todo() {
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }

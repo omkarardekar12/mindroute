@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../features/todo/todoSlice";
+import toast from "react-hot-toast";
 
 export default function AddForm() {
   const [task, setTask] = useState("");
@@ -8,8 +9,13 @@ export default function AddForm() {
 
   const submitHandler = (evt) => {
     evt.preventDefault();
+    if (!task.trim()) {
+      toast.error("Task cannot be empty!");
+      return;
+    }
     //console.log(task);
     dispatch(addTodo(task));
+    toast.success("Task added!");
     setTask("");
   };
 

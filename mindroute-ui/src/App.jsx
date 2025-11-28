@@ -1,8 +1,7 @@
-import "./App.css";
-import Todo from "./components/todo";
-import toast, { Toaster } from "react-hot-toast";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
+import Todo from "./components/todo";
+import toast, { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -13,10 +12,6 @@ function App() {
           position="bottom-right"
           toastOptions={{
             duration: 3000,
-            style: {
-              background: "#333",
-              color: "#fff",
-            },
           }}
         />
       </Provider>
