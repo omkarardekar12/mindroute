@@ -2,6 +2,7 @@ import { Provider } from "react-redux";
 import { store } from "./app/store";
 import Todo from "./components/todo";
 import toast, { Toaster } from "react-hot-toast";
+import "./index.css";
 
 function App() {
   return (
