@@ -8,7 +8,9 @@ export const getTodos = async (req: Request, res: Response): Promise<void> => {
 
   try {
     const result = await session.run(
-      "MATCH (u:User {uid: $uid})-[:OWNS]->(t:Task) RETURN t",
+      `MATCH (u:User {uid: $uid})-[:OWNS]->(t:Task) 
+      RETURN t
+      ORDER BY t.createdAt`,
       { uid }
     );
 
@@ -33,18 +35,33 @@ export const getTodos = async (req: Request, res: Response): Promise<void> => {
 export const addTodo = async (req: Request, res: Response): Promise<void> => {
   const session = driver.session();
   const { uid } = req.params;
-  const { task } = req.body;
-  const id = crypto.randomUUID();
+  const { id, task, isDone } = req.body;
 
   try {
-    await session.run(
+    const result = await session.run(
       `MERGE (u:User {uid: $uid})
-      CREATE (t:Task {id: $id, task: $task, isDone: false})
-      MERGE (u)-[:OWNS]->(t)`,
-      { uid, id, task }
+      CREATE (t:Task {
+        id: $id, 
+        task: $task, 
+        isDone: $isDone, 
+        createdAt: datetime()
+      })
+      MERGE (u)-[:OWNS]->(t)
+      RETURN t`,
+      { uid, id, task, isDone }
     );
 
-    res.json({ id, task, isDone: false });
+    const t = result.records[0].get("t").properties as {
+      id: string;
+      task: string;
+      isDone: boolean;
+    };
+
+    res.json({
+      id: t.id,
+      task: t.task,
+      isDone: t.isDone,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).send("Error adding todo");
@@ -62,9 +79,11 @@ export const markTodoDone = async (
 
   try {
     await session.run(
-      "MATCH (u:User {uid: $uid})-[:OWNS]->(t:Task {id: $id}) SET t.isDone = true",
+      `MATCH (u:User {uid: $uid})-[:OWNS]->(t:Task {id: $id}) 
+      SET t.isDone = true`,
       { uid, id }
     );
+
     res.json({ success: true });
   } catch (err) {
     console.log(err);
@@ -83,7 +102,8 @@ export const deleteTodo = async (
 
   try {
     await session.run(
-      "MATCH (u:User {uid: $uid})-[:OWNS]->(t:Task {id: $id}) DETACH DELETE t",
+      `MATCH (u:User {uid: $uid})-[:OWNS]->(t:Task {id: $id}) 
+      DETACH DELETE t`,
       { uid, id }
     );
     res.json({ success: true });
