@@ -23,16 +23,8 @@ export const todoSlice = createSlice({
       state.todos.push(newTodo);
     },
     deleteTodo: (state, action) => {
-      state.loading = true;
-      try {
-        const todoId = action.payload;
-        const response = apiDeleteTodo(user, todoId);
-        state.todos = state.todos.filter((todo) => todo.id !== todoId);
-      } catch (err) {
-        state.todos = state.todos;
-      } finally {
-        state.loading = false;
-      }
+      const todoId = action.payload;
+      state.todos = state.todos.filter((todo) => todo.id !== todoId);
     },
     marksAsDone: (state, action) => {
       state.loading = true;
