@@ -15,20 +15,12 @@ export const todoSlice = createSlice({
   initialState,
   reducers: {
     addTodo: (state, action) => {
-      state.loading = true;
-      try {
-        const newTodo = {
-          id: nanoid(),
-          task: action.payload,
-          isDone: false,
-        };
-        const response = apiAddTodo(userId, newTodo);
-        state.todos.push(newTodo);
-      } catch (err) {
-        state.todos = state.todos;
-      } finally {
-        state.loading = false;
-      }
+      const newTodo = {
+        id: nanoid(),
+        task: action.payload,
+        isDone: false,
+      };
+      state.todos.push(newTodo);
     },
     deleteTodo: (state, action) => {
       state.loading = true;
