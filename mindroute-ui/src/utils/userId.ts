@@ -2,7 +2,7 @@ import { nanoid } from "@reduxjs/toolkit";
 
 const USER_ID_KEY = "mindroute_userId";
 
-export function getOrCreateUserId() {
+export function getOrCreateUserId(): string {
   let userId = localStorage.getItem(USER_ID_KEY);
 
   if (!userId) {
