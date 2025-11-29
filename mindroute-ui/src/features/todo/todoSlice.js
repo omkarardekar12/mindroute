@@ -14,17 +14,6 @@ export const todoSlice = createSlice({
   name: "todo",
   initialState,
   reducers: {
-    getTodos: (state, action) => {
-      state.loading = true;
-      try {
-        const todos = apiGetTodos(state.userId);
-        state.todos = todos;
-      } catch (err) {
-        state.todos = [];
-      } finally {
-        state.loading = false;
-      }
-    },
     addTodo: (state, action) => {
       state.loading = true;
       try {
