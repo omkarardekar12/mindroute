@@ -28,7 +28,6 @@ export const todoSlice = createSlice({
     },
     marksAsDone: (state, action) => {
       const todoId = action.payload;
-      const response = apiMarkAsDoneTodo(userId, todoId);
       state.todos = state.todos.map((todo) => {
         if (todo.id === todoId) {
           return { ...todo, isDone: true };
