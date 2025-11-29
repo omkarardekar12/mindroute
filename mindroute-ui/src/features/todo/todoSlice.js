@@ -1,26 +1,23 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 import { getOrCreateUserId } from "../../utils/userId.js";
-import {
-  getTodos,
-  addTodo,
-  marksAsDoneTodo,
-  deleteTodo,
-} from "../../service/todos.js";
+
+const userId = getOrCreateUserId();
 
 const initialState = {
-  userId: getOrCreateUserId(),
+  userId,
   todos: [],
   loading: false,
+  error: null,
 };
 
 export const todoSlice = createSlice({
   name: "todo",
   initialState,
   reducers: {
-    getTodos: async (state, action) => {
+    getTodos: (state, action) => {
       state.loading = true;
       try {
-        const todos = await getTodos(state.userId);
+        const todos = apiGetTodos(state.userId);
         state.todos = todos;
       } catch (err) {
         state.todos = [];
@@ -28,7 +25,7 @@ export const todoSlice = createSlice({
         state.loading = false;
       }
     },
-    addTodo: async (state, action) => {
+    addTodo: (state, action) => {
       state.loading = true;
       try {
         const newTodo = {
@@ -36,7 +33,7 @@ export const todoSlice = createSlice({
           task: action.payload,
           isDone: false,
         };
-        const response = await addTodo(userId, newTodo);
+        const response = apiAddTodo(userId, newTodo);
         state.todos.push(newTodo);
       } catch (err) {
         state.todos = state.todos;
@@ -44,11 +41,11 @@ export const todoSlice = createSlice({
         state.loading = false;
       }
     },
-    deleteTodo: async (state, action) => {
+    deleteTodo: (state, action) => {
       state.loading = true;
       try {
         const todoId = action.payload;
-        const response = await deleteTodo(user, todoId);
+        const response = apiDeleteTodo(user, todoId);
         state.todos = state.todos.filter((todo) => todo.id !== todoId);
       } catch (err) {
         state.todos = state.todos;
@@ -56,11 +53,11 @@ export const todoSlice = createSlice({
         state.loading = false;
       }
     },
-    marksAsDone: async (state, action) => {
+    marksAsDone: (state, action) => {
       state.loading = true;
       try {
         const todoId = action.payload;
-        const response = await marksAsDoneTodo(userId, todoId);
+        const response = apiMarkAsDoneTodo(userId, todoId);
         state.todos = state.todos.map((todo) => {
           if (todo.id === todoId) {
             return { ...todo, isDone: true };

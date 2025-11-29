@@ -10,7 +10,7 @@ export const addTodo = async (userId, todo) => {
   return response.data;
 };
 
-export const marksAsDoneTodo = async (userId, todoId) => {
+export const markAsDoneTodo = async (userId, todoId) => {
   const response = await api.put(`/todos/${userId}/${todoId}`);
   return response.data;
 };
