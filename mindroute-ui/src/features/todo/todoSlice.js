@@ -27,21 +27,14 @@ export const todoSlice = createSlice({
       state.todos = state.todos.filter((todo) => todo.id !== todoId);
     },
     marksAsDone: (state, action) => {
-      state.loading = true;
-      try {
-        const todoId = action.payload;
-        const response = apiMarkAsDoneTodo(userId, todoId);
-        state.todos = state.todos.map((todo) => {
-          if (todo.id === todoId) {
-            return { ...todo, isDone: true };
-          }
-          return todo;
-        });
-      } catch (err) {
-        state.todos = state.todos;
-      } finally {
-        state.loading = false;
-      }
+      const todoId = action.payload;
+      const response = apiMarkAsDoneTodo(userId, todoId);
+      state.todos = state.todos.map((todo) => {
+        if (todo.id === todoId) {
+          return { ...todo, isDone: true };
+        }
+        return todo;
+      });
     },
   },
 });
