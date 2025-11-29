@@ -1,6 +1,8 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { getOrCreateUserId } from "../../utils/userId.js";
 
 const initialState = {
+  userId: getOrCreateUserId(),
   todos: [],
 };
 
