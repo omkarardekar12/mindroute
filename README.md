@@ -1,5 +1,14 @@
 <h1><img src="./mindroute-ui/public/MindRoute.svg" width="55rem" height="55rem" valign="middle"/> MindRoute - Organize Today. Conquer Tomorrow.</h1>
 
+<p>
+  <img src="https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=000&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Redux-593D88?logo=redux&logoColor=white&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Express-000000?logo=express&logoColor=white&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Neo4j-008CC1?logo=neo4j&logoColor=white&style=for-the-badge" />
+</p>
+
 <h2>MindRoute - Organize Today. Conquer Tomorrow.</h2>
 <h3>A smart task management app that empowers you to organize, track, and complete your tasks effortlessly.<br/>
 It stores tasks as connected nodes and relationships inside a graph structure, enabling better organization and future graph-based insights. MindRoute is built using React, Redux, TypeScript, Node.js, Express, and Neo4j (Graph Database).</h3>
@@ -84,3 +93,5 @@ npm i
 npm run dev
 </code>
 </pre>
+
+<hr/>
