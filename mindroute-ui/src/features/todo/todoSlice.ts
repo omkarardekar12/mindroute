@@ -2,7 +2,7 @@ import {
   createSlice,
   nanoid,
   createAsyncThunk,
-  PayloadAction,
+  type PayloadAction,
 } from "@reduxjs/toolkit";
 import { getOrCreateUserId } from "../../utils/userId.ts";
 import {
@@ -19,6 +19,9 @@ interface TodoState {
   userId: string;
   todos: Todo[];
   loading: boolean;
+  addLoading: boolean;
+  markLoading: boolean;
+  deleteLoading: boolean;
   error: string | null;
 }
 
