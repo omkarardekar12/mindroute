@@ -23,10 +23,10 @@ It stores tasks as connected nodes and relationships inside a graph structure, e
 </h4>
 
 <h2>Tech Stack / Technologies Used</h2>
-<h4>Frontend: React, TypeScript, Redux, Redux Toolkit, React-Redux, Vite, Axios, TailwindCSS, React Hot Toast, React Icons, JavaScript, CSS3, HTML5<br/>
-Backend: Node.js, Express.js, TypeScript, Neo4j Driver, CORS, dotenv, ts-node, nodemon</br>
-Database: Neo4j AuraDB (Cloud Graph Database), Neo4j (Graph Database)</br>
-Deployment: Render (Backend), Vercel (Frontend)</h4>
+<h4>&rarr; Frontend: React, TypeScript, Redux, Redux Toolkit, React-Redux, Vite, Axios, TailwindCSS, React Hot Toast, React Icons, JavaScript, CSS3, HTML5<br/>
+&rarr; Backend: Node.js, Express.js, TypeScript, Neo4j Driver, CORS, dotenv, ts-node, nodemon</br>
+&rarr; Database: Neo4j AuraDB (Cloud Graph Database), Neo4j (Graph Database)</br>
+&rarr; Deployment: Render (Backend), Vercel (Frontend)</h4>
 
 <h2>Graph Database - Neo4j AuraDB Overview</h2>
 <h4>MindRoute stores both users and tasks as nodes and connects them using relationships. This graph-based structure enables smarter querying, better organization, and future analytics opportunities.</h4>
