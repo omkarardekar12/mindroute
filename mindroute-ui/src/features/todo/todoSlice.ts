@@ -1,5 +1,9 @@
-import { createSlice, nanoid, createAsyncThunk } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  nanoid,
+  createAsyncThunk,
+  type PayloadAction,
+} from "@reduxjs/toolkit";
 import { getOrCreateUserId } from "../../utils/userId.ts";
 import {
   getTodos as apiGetTodos,
@@ -25,6 +29,9 @@ const initialState: TodoState = {
   userId,
   todos: [],
   loading: false,
+  addLoading: false,
+  markLoading: false,
+  deleteLoading: false,
   error: null,
 };
 
@@ -82,7 +89,56 @@ export const todoSlice = createSlice({
       })
       .addCase(fetchTodos.rejected, (state, action) => {
         state.loading = false;
-        state.error = action?.error?.message || "Failed to load todos";
+        state.error = action.error.message || "Failed to load todos";
+      })
+
+      .addCase(addTodoAsync.pending, (state) => {
+        state.addLoading = true;
+        state.error = null;
+      })
+      .addCase(addTodoAsync.fulfilled, (state, action: PayloadAction<Todo>) => {
+        state.addLoading = false;
+        state.todos.push(action.payload);
+      })
+      .addCase(addTodoAsync.rejected, (state, action) => {
+        state.addLoading = false;
+        state.error = action.error.message || "Failed to add todo";
+      })
+
+      .addCase(markAsDoneAsync.pending, (state) => {
+        state.markLoading = true;
+        state.error = null;
+      })
+      .addCase(
+        markAsDoneAsync.fulfilled,
+        (state, action: PayloadAction<string>) => {
+          state.markLoading = false;
+          const todoId = action.payload;
+          state.todos = state.todos.map((todo) =>
+            todo.id === todoId ? { ...todo, isDone: true } : todo
+          );
+        }
+      )
+      .addCase(markAsDoneAsync.rejected, (state, action) => {
+        state.markLoading = false;
+        state.error = action.error.message || "Failed to mark todo as done";
+      })
+
+      .addCase(deleteTodoAsync.pending, (state) => {
+        state.deleteLoading = true;
+        state.error = null;
+      })
+      .addCase(
+        deleteTodoAsync.fulfilled,
+        (state, action: PayloadAction<string>) => {
+          state.deleteLoading = false;
+          const todoId = action.payload;
+          state.todos = state.todos.filter((todo) => todo.id !== todoId);
+        }
+      )
+      .addCase(deleteTodoAsync.rejected, (state, action) => {
+        state.deleteLoading = false;
+        state.error = action.error.message || "Failed to delete todo";
       });
   },
 });
