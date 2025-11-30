@@ -49,7 +49,7 @@ export default function Todo() {
   }
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-black via-gray-950 to-gray-950 text-white p-4">
+    <div className="w-full h-full flex flex-col items-center justify-center bg-linear-to-b from-black via-gray-950 to-gray-950 text-white p-4">
       <div className="w-full flex items-center justify-center pb-10 my-4">
         <Logo />
       </div>
