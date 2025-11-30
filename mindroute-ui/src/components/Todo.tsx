@@ -16,7 +16,7 @@ import ButtonLoading from "./ButtonLoading.tsx";
 import type { Todo } from "../service/todos.ts";
 
 export default function Todo() {
-  const { todos, loading, markLoading, deleteLoading } = useAppSelector(
+  const { todos, loading, markingId, deletingId } = useAppSelector(
     (state) => state.todo
   );
   const dispatch = useAppDispatch();
@@ -73,9 +73,9 @@ export default function Todo() {
                   <button
                     className="flex items-center gap-2 px-4 py-2 bg-green-600 rounded-lg text-sm hover:bg-green-700 transition-all duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                     onClick={() => markAsDone(todo.id)}
-                    disabled={markLoading}
+                    disabled={markingId === todo.id}
                   >
-                    {markLoading ? (
+                    {markingId === todo.id ? (
                       <>
                         <ButtonLoading />
                         <span>Marking...</span>
@@ -91,9 +91,9 @@ export default function Todo() {
                 <button
                   className="flex items-center gap-2 px-4 py-2 bg-red-600 rounded-lg text-sm hover:bg-red-700 transition-all duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                   onClick={() => handleDelete(todo.id)}
-                  disabled={deleteLoading}
+                  disabled={deletingId == todo.id}
                 >
-                  {deleteLoading ? (
+                  {deletingId == todo.id ? (
                     <>
                       <ButtonLoading />
                       <span>Deleting...</span>
