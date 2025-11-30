@@ -6,9 +6,9 @@ export default function Logo() {
       <img
         src={logo}
         alt="MindRoute Logo"
-        className="w-19 h-19 drop-shadow-[0_0_6px_#00E0FF]"
+        className="w-10 h-10 sm:w-19 sm:h-19 drop-shadow-[0_0_6px_#00E0FF]"
       />
-      <span className="text-5xl font-black bg-linear-to-r from-cyan-400 to-green-400 bg-clip-text text-transparent italic tracking-widest">
+      <span className="text-2xl sm:text-5xl font-black bg-linear-to-r from-cyan-400 to-green-400 bg-clip-text text-transparent italic tracking-widest">
         indRoute
       </span>
     </div>
