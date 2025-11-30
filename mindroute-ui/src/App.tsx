@@ -1,7 +1,7 @@
 import { Provider } from "react-redux";
-import { store } from "./app/store";
+import { store } from "./app/store.ts";
 import Todo from "./components/Todo";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import "./index.css";
 
 function App() {
