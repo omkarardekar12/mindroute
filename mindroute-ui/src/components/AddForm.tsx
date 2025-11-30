@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addTodo } from "../features/todo/todoSlice";
+import type { RootState, AppDispatch } from "../app/store.ts";
+import { addTodoAsync } from "../features/todo/todoSlice.ts";
 import toast from "react-hot-toast";
 
 export default function AddForm() {
   const [task, setTask] = useState("");
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const submitHandler = (evt) => {
     evt.preventDefault();

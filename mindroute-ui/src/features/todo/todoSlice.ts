@@ -1,9 +1,5 @@
-import {
-  createSlice,
-  nanoid,
-  createAsyncThunk,
-  type PayloadAction,
-} from "@reduxjs/toolkit";
+import { createSlice, nanoid, createAsyncThunk } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
 import { getOrCreateUserId } from "../../utils/userId.ts";
 import {
   getTodos as apiGetTodos,
