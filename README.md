@@ -7,7 +7,7 @@ It stores tasks as connected nodes and relationships inside a graph structure, e
 <h3><a href="https://mindroute.vercel.app">🌍 Live Demo: https://mindroute.vercel.app</a></h3>
 <h3><a href="https://mindroute.onrender.com">🛠 Backend API: https: //mindroute.onrender.com</a></h3>
 
-<h3>Features</h3>
+<h2>Features</23>
 <h4>
 <ul>
 <li>Add, mark as done & delete tasks</li>
@@ -22,16 +22,16 @@ It stores tasks as connected nodes and relationships inside a graph structure, e
 </ul>
 </h4>
 
-<h3>Tech Stack / Technologies Used</h3>
+<h2>Tech Stack / Technologies Used</h2>
 <h4>Frontend: React, TypeScript, Redux, Redux Toolkit, React-Redux, Vite, Axios, TailwindCSS, React Hot Toast, React Icons, JavaScript, CSS3, HTML5</h4>
 <h4>Backend: Node.js, Express.js, TypeScript, Neo4j Driver, CORS, dotenv, ts-node, nodemon</h4>
 <h4>Database: Neo4j AuraDB (Cloud Graph Database), Neo4j (Graph Database)</h4>
 <h4>Deployment: Render (Backend), Vercel (Frontend)</h4>
 
-<h3>Graph Database - Neo4j AuraDB Overview</h3>
+<h2>Graph Database - Neo4j AuraDB Overview</h2>
 <h4>MindRoute stores both users and tasks as nodes and connects them using relationships. This graph-based structure enables smarter querying, better organization, and future analytics opportunities.</h4>
 
-<h3>Installation & Setup</h3>
+<h2>Installation & Setup</h2>
 <h4>1. Clone the Repository</h4>
 <pre>
 <code>
