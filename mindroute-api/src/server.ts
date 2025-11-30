@@ -20,6 +20,10 @@ app.use("/api/todos", todoRoutes);
 
 const PORT: number = Number(process.env.PORT) || 5000;
 
+app.get("/", (req, res) => {
+  res.send("Welcome to MindRoute");
+});
+
 app.listen(PORT, () => {
   console.log(`MindRoute Server is Listening to PORT: ${PORT}`);
 });

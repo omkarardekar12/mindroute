@@ -44,9 +44,9 @@ cd MindRoute
 <pre>
 <code>
 PORT=5000
-NEO4J_URI=<your-db-uri>
-NEO4J_USER=<your-db-user>
-NEO4J_PASSWORD=<your-db-password>
+NEO4J_URI=neo4j+s://&lt;your-db-uri&gt;
+NEO4J_USER=neo4j
+NEO4J_PASSWORD=&lt;your-db-password&gt;
 FRONTEND_URL=http://localhost:3000
 </code>
 </pre>
