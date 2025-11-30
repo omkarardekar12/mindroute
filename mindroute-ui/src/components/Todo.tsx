@@ -51,7 +51,7 @@ export default function Todo() {
     <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-black via-gray-950 to-gray-950 text-white p-4">
       <AddForm />
       <div className="w-full md:w-[60%] flex flex-col justify-center p-4 gap-4 text-xl">
-        {todos.length > 0 ? (
+        {Array.isArray(todos) && todos.length > 0 ? (
           todos.map((todo: Todo) => (
             <div
               key={todo.id}
