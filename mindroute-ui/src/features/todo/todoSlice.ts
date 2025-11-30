@@ -20,8 +20,8 @@ interface TodoState {
   todos: Todo[];
   loading: boolean;
   addLoading: boolean;
-  markLoading: boolean;
-  deleteLoading: boolean;
+  markingId: string | null;
+  deletingId: string | null;
   error: string | null;
 }
 
@@ -30,8 +30,8 @@ const initialState: TodoState = {
   todos: [],
   loading: false,
   addLoading: false,
-  markLoading: false,
-  deleteLoading: false,
+  markingId: null,
+  deletingId: null,
   error: null,
 };
 
@@ -105,14 +105,14 @@ export const todoSlice = createSlice({
         state.error = action.error.message || "Failed to add todo";
       })
 
-      .addCase(markAsDoneAsync.pending, (state) => {
-        state.markLoading = true;
+      .addCase(markAsDoneAsync.pending, (state, action) => {
+        state.markingId = action.meta.arg;
         state.error = null;
       })
       .addCase(
         markAsDoneAsync.fulfilled,
         (state, action: PayloadAction<string>) => {
-          state.markLoading = false;
+          state.markingId = null;
           const todoId = action.payload;
           state.todos = state.todos.map((todo) =>
             todo.id === todoId ? { ...todo, isDone: true } : todo
@@ -120,24 +120,24 @@ export const todoSlice = createSlice({
         }
       )
       .addCase(markAsDoneAsync.rejected, (state, action) => {
-        state.markLoading = false;
+        state.markingId = null;
         state.error = action.error.message || "Failed to mark todo as done";
       })
 
-      .addCase(deleteTodoAsync.pending, (state) => {
-        state.deleteLoading = true;
+      .addCase(deleteTodoAsync.pending, (state, action) => {
+        state.deletingId = action.meta.arg;
         state.error = null;
       })
       .addCase(
         deleteTodoAsync.fulfilled,
         (state, action: PayloadAction<string>) => {
-          state.deleteLoading = false;
+          state.deletingId = null;
           const todoId = action.payload;
           state.todos = state.todos.filter((todo) => todo.id !== todoId);
         }
       )
       .addCase(deleteTodoAsync.rejected, (state, action) => {
-        state.deleteLoading = false;
+        state.deletingId = null;
         state.error = action.error.message || "Failed to delete todo";
       });
   },
