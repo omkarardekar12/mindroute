@@ -1,0 +1,19 @@
+<svg width="124" height="124" viewBox="0 0 124 124" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="62" cy="62" r="56" stroke="url(#grad)" stroke-width="8"></circle>
+
+<!-- Wider M -->
+<circle cx="38" cy="82" r="7" fill="#00E0FF"></circle>
+<circle cx="38" cy="42" r="7" fill="#00E0FF"></circle>
+<circle cx="62" cy="62" r="7" fill="#00E0FF"></circle>
+<circle cx="86" cy="42" r="7" fill="#00E0FF"></circle>
+<circle cx="86" cy="82" r="7" fill="#00E0FF"></circle>
+
+<path d="M38 82 L38 42 L62 62 L86 42 L86 82" stroke="#00E0FF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"></path>
+
+<defs>
+<linearGradient id="grad" x1="0" y1="0" x2="124" y2="124">
+<stop offset="0%" stop-color="#00E0FF"></stop>
+<stop offset="100%" stop-color="#3BFF85"></stop>
+</linearGradient>
+</defs>
+</svg>

@@ -1,6 +1,6 @@
 import { Provider } from "react-redux";
 import { store } from "./app/store.ts";
-import Todo from "./components/Todo";
+import Todo from "./components/Todo.tsx";
 import { Toaster } from "react-hot-toast";
 import "./index.css";
 

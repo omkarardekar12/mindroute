@@ -14,6 +14,7 @@ import toast from "react-hot-toast";
 import Loading from "./Loading.tsx";
 import ButtonLoading from "./ButtonLoading.tsx";
 import type { Todo } from "../service/todos.ts";
+import Logo from "./Logo.tsx";
 
 export default function Todo() {
   const { todos, loading, markingId, deletingId } = useAppSelector(
@@ -49,6 +50,9 @@ export default function Todo() {
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-black via-gray-950 to-gray-950 text-white p-4">
+      <div className="w-full flex items-center justify-center pb-10 my-4">
+        <Logo />
+      </div>
       <AddForm />
       <div className="w-full md:w-[60%] flex flex-col justify-center p-4 gap-4 text-xl">
         {Array.isArray(todos) && todos.length > 0 ? (
