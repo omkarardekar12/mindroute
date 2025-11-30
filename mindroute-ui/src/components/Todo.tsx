@@ -1,27 +1,49 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import AddForm from "./AddForm.js";
+import { useDispatch } from "react-redux";
+import type { RootState, AppDispatch } from "../app/store.ts";
+import AddForm from "./AddForm.tsx";
 import { FaTasks } from "react-icons/fa";
 import { BsListTask } from "react-icons/bs";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { IoMdCloseCircleOutline } from "react-icons/io";
-import { useDispatch } from "react-redux";
-import { deleteTodo } from "../features/todo/todoSlice.js";
-import { marksAsDone } from "../features/todo/todoSlice.js";
+import {
+  fetchTodos,
+  deleteTodoAsync,
+  markAsDoneAsync,
+} from "../features/todo/todoSlice.ts";
+import toast from "react-hot-toast";
+import Loading from "./Loading.tsx";
 
 export default function Todo() {
-  const todos = useSelector((state) => state.todos);
-  console.log(todos);
-  const dispatch = useDispatch();
+  const { todos, loading } = useSelector((state: RootState) => state.todo);
+  const dispatch = useDispatch<AppDispatch>();
 
-  const clickHandler = (id) => {
-    //console.log("delete", id);
-    dispatch(deleteTodo(id));
+  useEffect(() => {
+    dispatch(fetchTodos());
+  }, [dispatch]);
+
+  const handleDelete = async (id: string) => {
+    try {
+      await dispatch(deleteTodoAsync(id)).unwrap();
+      toast.success("Task deleted");
+    } catch (err) {
+      toast.error("Failed to delete task");
+    }
   };
 
-  const markAsDone = (id) => {
-    //console.log("mark as done", id);
-    dispatch(marksAsDone(id));
+  const markAsDone = async (id: string) => {
+    try {
+      await dispatch(markAsDoneAsync(id)).unwrap();
+      toast.success("Marked as done");
+    } catch (error) {
+      toast.error("Failed to mark as done");
+    }
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-black via-gray-950 to-gray-950 text-white p-4">
@@ -56,7 +78,7 @@ export default function Todo() {
                 )}
                 <button
                   className="flex items-center gap-2 px-4 py-2 bg-red-600 rounded-lg text-sm hover:bg-red-700 transition-all duration-200 cursor-pointer"
-                  onClick={() => clickHandler(todo.id)}
+                  onClick={() => handleDelete(todo.id)}
                 >
                   <IoMdCloseCircleOutline className="size-5" />
                   <span>Delete</span>

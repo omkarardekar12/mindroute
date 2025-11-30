@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { useDispatch } from "react-redux";
-import type { RootState, AppDispatch } from "../app/store.ts";
+import type { AppDispatch } from "../app/store.ts";
 import { addTodoAsync } from "../features/todo/todoSlice.ts";
 import toast from "react-hot-toast";
 
