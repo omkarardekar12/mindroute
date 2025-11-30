@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import AddForm from "./AddForm";
+import AddForm from "./AddForm.js";
 import { FaTasks } from "react-icons/fa";
 import { BsListTask } from "react-icons/bs";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";

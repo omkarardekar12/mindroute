@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type { FormEvent } from "react";
 import { useDispatch } from "react-redux";
 import type { RootState, AppDispatch } from "../app/store.ts";
 import { addTodoAsync } from "../features/todo/todoSlice.ts";
@@ -8,16 +9,21 @@ export default function AddForm() {
   const [task, setTask] = useState("");
   const dispatch = useDispatch<AppDispatch>();
 
-  const submitHandler = (evt) => {
+  const submitHandler = async (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     if (!task.trim()) {
       toast.error("Task cannot be empty!");
       return;
     }
     //console.log(task);
-    dispatch(addTodo(task));
-    toast.success("Task added!");
-    setTask("");
+
+    try {
+      await dispatch(addTodoAsync(task)).unwrap();
+      toast.success("Task added!");
+      setTask("");
+    } catch {
+      toast.error("Failed to add task.");
+    }
   };
 
   return (
