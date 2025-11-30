@@ -40,14 +40,14 @@ export default function AddForm() {
       ></input>
       <button
         type="submit"
-        className="px-5 py-3 bg-blue-600 rounded-xl font-semibold text-white hover:bg-blue-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="flex items-center justify-center px-5 py-3 bg-blue-600 rounded-xl font-semibold text-white hover:bg-blue-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
         disabled={!task.trim() || addLoading}
       >
         {addLoading ? (
-          <>
-            <ButtonLoading />
-            <span>Add Task</span>
-          </>
+          <div className="flex items-center gap-3">
+            <ButtonLoading size="md" />
+            <span>Adding Task...</span>
+          </div>
         ) : (
           <span>Add Task</span>
         )}
