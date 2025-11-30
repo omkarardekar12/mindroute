@@ -113,8 +113,8 @@ export default function Todo() {
             </div>
           ))
         ) : (
-          <p className="text-md text-gray-400 flex flex-row items-center justify-center gap-3">
-            <FaTasks className="size-5" /> Current No Task
+          <p className="text-md text-gray-400 flex flex-row items-center justify-center gap-3 opacity-50">
+            <FaTasks className="size-5" /> Currently No Tasks
           </p>
         )}
       </div>
