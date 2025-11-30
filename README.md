@@ -30,7 +30,7 @@ It stores tasks as connected nodes and relationships inside a graph structure, e
 
 <h2>Graph Database - Neo4j AuraDB Overview</h2>
 <h4>MindRoute stores both users and tasks as nodes and connects them using relationships. This graph-based structure enables smarter querying, better organization, and future analytics opportunities.</h4>
-<h4>Cypher Query: </h4>
+<h4>Cypher Query:</h4>
 <pre>
 <code>
 MATCH (n)
@@ -40,7 +40,7 @@ RETURN n, r;
 </pre>
 <h4>Visualization:</h4>
 <div>
-<img src="./mindroute-ui/public/graphDB.png" width="90%" />
+<img src="./mindroute-ui/public/graphDB.png" width="90%" alt="Graph Visualization in Neo4j AuraDB" />
 </div>
 
 <h2>Installation & Setup</h2>
