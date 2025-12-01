@@ -4,9 +4,10 @@
   <img src="https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=000&style=for-the-badge" />
   <img src="https://img.shields.io/badge/Redux-593D88?logo=redux&logoColor=white&style=for-the-badge" />
   <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Neo4j-008CC1?logo=neo4j&logoColor=white&style=for-the-badge" />
   <img src="https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white&style=for-the-badge" />
   <img src="https://img.shields.io/badge/Express-000000?logo=express&logoColor=white&style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Neo4j-008CC1?logo=neo4j&logoColor=white&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" />
 </p>
 
 <h2>MindRoute - Organize Today. Conquer Tomorrow.</h2>
